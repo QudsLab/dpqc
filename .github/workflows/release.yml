@@ -122,7 +122,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install --force-reinstall --no-cache-dir dpqc==${{ steps.get_version.outputs.version }}
       
-      - name: pip_test: Ensure pip-installed dpqc
+      - name: Ensure pip-installed dpqc
         run: python pip_test.py
       
       - name: Run tests with installed package
