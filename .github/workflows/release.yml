@@ -37,6 +37,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install termcolor
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: 1
+          PYTHONWARNINGS: ignore
       
       - name: Run tests
         run: python test.py
@@ -64,6 +67,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install build twine
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: 1
+          PYTHONWARNINGS: ignore
       
       - name: Build package
         run: python -m build
@@ -121,6 +127,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install --force-reinstall --no-cache-dir dpqc==${{ steps.get_version.outputs.version }}
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: 1
+          PYTHONWARNINGS: ignore
       
       - name: Ensure pip-installed dpqc
         run: python pip_test.py
