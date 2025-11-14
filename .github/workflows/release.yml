@@ -44,6 +44,9 @@ jobs:
       - name: Run tests
         run: python test.py
         continue-on-error: false
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: 1
+          PYTHONWARNINGS: ignore
 
   # Job 2: Build and publish to PyPI (only on tags)
   release-to-pypi:
@@ -133,9 +136,14 @@ jobs:
       
       - name: Ensure pip-installed dpqc
         run: python pip_test.py
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: 1
+          PYTHONWARNINGS: ignore
       
       - name: Run tests with installed package
         env:
           PYTHONPATH: ""
+          PIP_DISABLE_PIP_VERSION_CHECK: 1
+          PYTHONWARNINGS: ignore
         run: python test.py
         continue-on-error: false
